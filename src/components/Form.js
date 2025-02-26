@@ -4,7 +4,7 @@ import React ,{useState}from 'react'
 //States make site dynamic
 
 export default function Form(props) {
-    const [text,setText]=useState("This is text")
+    const [text,setText]=useState("")
     const handleonchange =(event)=>{
         //console.log("text changed")
         setText(event.target.value)
@@ -22,17 +22,17 @@ export default function Form(props) {
   return (
     <><div style={{color : props.mode==="light"?"black":"white"}}> 
     <h1>{props.heading}</h1>
-    <div className="mb-3 " >
-    <textarea className="form-control" value={text} style={{backgroundColor : props.mode==="dark"?"grey":"white",
-        color: props.mode==="dark"?"white":"black"}}onChange={handleonchange} id="exampleFormControlTextarea1" rows="3"></textarea>
-    <button type="submit" className="btn btn-primary my-3"  onClick={handleonclick1}>UpperCase</button>
-    <button type="submit" className="btn btn-primary mx-3"  onClick={handleonclick2}>LowerCase</button>
+    <div className=" mb-3"   >
+    <textarea className="form-control " value={text} style={{backgroundColor : props.mode==="dark"?"grey":"white",
+        color: props.mode==="dark"?"white":"black"}}onChange={handleonchange} id="exampleFormControlTextarea1" rows="6" cols="15" ></textarea>
+    <button disabled={text.length===0} type="submit" className="btn btn-primary my-3"  onClick={handleonclick1}>UpperCase</button>
+    <button disabled={text.length===0} type="submit" className="btn btn-primary mx-3"  onClick={handleonclick2}>LowerCase</button>
     </div>
 
     <div>
         <h2 >Text Summary</h2>
-        <p>{text.split(" ").length} word and {text.length} characters</p>
-        <p>{0.008*text.split(" ").length} minutes read</p>
+        <p>{text.split(" ").filter((element )=>{return element.length!==0}).length} word and {text.length} characters</p>
+        <p>{0.008*text.split(" ").filter((element )=>{return element.length!==0}).length} minutes read</p>
 
     </div>
 </div>

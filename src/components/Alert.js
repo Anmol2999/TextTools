@@ -7,10 +7,11 @@ export default function Alert(props) {
 
   }
   return (
-    //if the props.type is null then further will not be printed
-        props.alert && <div className="alert alert-warning alert-dismissible fade show" role="alert">
+    <div style={{height:"50px" }}>
+      {/* if the props.type is null then further will not be printed */}
+       { props.alert && <div className="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>{capitalize(props.alert.type)}</strong> :{props.alert.msg}
-        </div>
-    
+        </div>}
+    </div>
   )
 }
